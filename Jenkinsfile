@@ -1,9 +1,12 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('error') {
       steps {
-        build 'Build'
+        ws(dir: 'mvn-project') {
+          build 'Automat-IT'
+        }
+        
       }
     }
   }
