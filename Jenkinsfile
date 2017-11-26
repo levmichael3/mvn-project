@@ -4,7 +4,7 @@ pipeline {
     stage('error') {
       steps {
         ws(dir: 'mvn-project') {
-          build 'Automat-IT'
+          build(job: 'Automat-IT', propagate: true)
         }
         
       }
