@@ -1,6 +1,6 @@
 node {
   def mvnHome = "${env.MAVEN_HOME}"
-  def pom, version
+  // def pom, version
 
   stage('Checkout') {
     // Clean any failed build leftovers and checkout
@@ -8,11 +8,11 @@ node {
     // pom = readMavenPom file: 'pom.xml'
   }
   stage('Prepare') {
-   sh "'${mvnHome}/bin/mvn' clean validate " +
+   sh "'${mvnHome}/bin/mvn' clean validate initialize compile " +
     "-Dmaven.test.failure.ignore -Dmaven.clean.failOnError=false -Dmaven.clean.failOnError=false"
   }
   stage('Build') {
-    sh "'${mvnHome}/bin/mvn' package " +
+    sh "'${mvnHome}/bin/mvn' test install package " +
     "-s ${mvnHome}/conf/settings.xml " +
     "-e -f pom.xml"
   }
