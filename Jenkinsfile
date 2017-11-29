@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('error') {
+    stage('Checkout') {
       steps {
         ws(dir: 'mvn-project') {
           git 'https://github.com/levmichael3/mvn-project.git'
@@ -11,9 +11,8 @@ pipeline {
     }
     stage('Prepare') {
       steps {
-        sh '''def mvnHome = "${env.MAVEN_HOME}"
-sh "\'${mvnHome}/bin/mvn\' clean validate" +
-    "-Dmaven.test.failure.ignore -Dmaven.clean.failOnError=false -Dmaven.clean.failOnError=false"'''
+        sh '''mvnHome=$MAVEN_HOME
+${mvnHome}/bin/mvn\' clean validate -Dmaven.test.failure.ignore -Dmaven.clean.failOnError=false -Dmaven.clean.failOnError=false'''
       }
     }
   }
