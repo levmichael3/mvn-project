@@ -9,5 +9,12 @@ pipeline {
         
       }
     }
+    stage('Prepare') {
+      steps {
+        sh '''def mvnHome = "${env.MAVEN_HOME}"
+sh "\'${mvnHome}/bin/mvn\' clean validate" +
+    "-Dmaven.test.failure.ignore -Dmaven.clean.failOnError=false -Dmaven.clean.failOnError=false"'''
+      }
+    }
   }
 }
