@@ -15,5 +15,10 @@ pipeline {
 ${mvnHome}/bin/mvn clean validate -Dmaven.test.failure.ignore -Dmaven.clean.failOnError=false -Dmaven.clean.failOnError=false'''
       }
     }
+    stage('Build') {
+      steps {
+        sh '$mvnHome/bin/mvn package -s ${mvnHome}/conf/settings.xml -e -f pom.xml'
+      }
+    }
   }
 }
