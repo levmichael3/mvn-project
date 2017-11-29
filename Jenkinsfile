@@ -12,7 +12,7 @@ pipeline {
     stage('Prepare') {
       steps {
         sh '''mvnHome=$MAVEN_HOME
-${mvnHome}/bin/mvn\' clean validate -Dmaven.test.failure.ignore -Dmaven.clean.failOnError=false -Dmaven.clean.failOnError=false'''
+${mvnHome}/bin/mvn clean validate -Dmaven.test.failure.ignore -Dmaven.clean.failOnError=false -Dmaven.clean.failOnError=false'''
       }
     }
   }
