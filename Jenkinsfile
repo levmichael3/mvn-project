@@ -17,7 +17,8 @@ ${mvnHome}/bin/mvn clean validate -Dmaven.test.failure.ignore -Dmaven.clean.fail
     }
     stage('Build') {
       steps {
-        sh '$mvnHome/bin/mvn package -s ${mvnHome}/conf/settings.xml -e -f pom.xml'
+        sh '''mvnHome=$MAVEN_HOME
+$mvnHome/bin/mvn package -s ${mvnHome}/conf/settings.xml -e -f pom.xml'''
       }
     }
   }
