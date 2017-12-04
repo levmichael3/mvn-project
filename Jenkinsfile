@@ -31,6 +31,7 @@ node {
     }
   }
   stage('Publish') {
-    nexusPublisher nexusInstanceId: 'Nexus', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'web/target/time-tracker-web-0.3.1.war']], mavenCoordinate: [artifactId: 'time-tracker-web', groupId: 'maven-group', packaging: 'war', version: '0.3.2']]]
+    // TBD while nexus is unavailable
+    //  nexusPublisher nexusInstanceId: 'Nexus', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'web/target/time-tracker-web-0.3.1.war']], mavenCoordinate: [artifactId: 'time-tracker-web', groupId: 'maven-group', packaging: 'war', version: '0.3.2']]]
   }
 } 
