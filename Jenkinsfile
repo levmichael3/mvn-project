@@ -12,7 +12,8 @@ node {
     "-Dmaven.test.failure.ignore -Dmaven.clean.failOnError=false -Dmaven.clean.failOnError=false"
   }
   stage('Build') {
-    sh "'${mvnHome}/bin/mvn' test integration-test install package " +
+    // with install // sh "'${mvnHome}/bin/mvn' test integration-test install package " +
+    sh "'${mvnHome}/bin/mvn' test integration-test package " +  
     "-s ${mvnHome}/conf/settings.xml " +
     "-e -f pom.xml"
   }
